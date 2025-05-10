@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SQLi Scanner</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#6b21a8" offset="0%"></stop>
+            <stop stop-color="#4338ca" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#8b5cf6" offset="0%"></stop>
+            <stop stop-color="#3b82f6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#4f46e5" offset="0%"></stop>
+            <stop stop-color="#8b5cf6" offset="100%"></stop>
+        </linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+    </defs>
+    <g id="SQLi-Scanner" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#121212" x="0" y="0" width="800" height="600"></rect>
+        
+        <!-- Background Grid -->
+        <g id="grid" opacity="0.2" stroke="#8b5cf6" stroke-width="0.5">
+            <path d="M0,75 L800,75"></path>
+            <path d="M0,150 L800,150"></path>
+            <path d="M0,225 L800,225"></path>
+            <path d="M0,300 L800,300"></path>
+            <path d="M0,375 L800,375"></path>
+            <path d="M0,450 L800,450"></path>
+            <path d="M0,525 L800,525"></path>
+            <path d="M100,0 L100,600"></path>
+            <path d="M200,0 L200,600"></path>
+            <path d="M300,0 L300,600"></path>
+            <path d="M400,0 L400,600"></path>
+            <path d="M500,0 L500,600"></path>
+            <path d="M600,0 L600,600"></path>
+            <path d="M700,0 L700,600"></path>
+        </g>
+        
+        <!-- Main Content -->
+        <g id="Content" transform="translate(100, 100)">
+            <!-- Database Icon -->
+            <g id="Database" transform="translate(150, 100)" filter="url(#glow)">
+                <ellipse id="Top" fill="url(#linearGradient-1)" cx="200" cy="40" rx="120" ry="40"></ellipse>
+                <path d="M320,40 L320,180 C320,202.09139 266.27417,220 200,220 C133.72583,220 80,202.09139 80,180 L80,40" id="Middle" stroke="#8b5cf6" stroke-width="4" fill="url(#linearGradient-1)" opacity="0.8"></path>
+                <path d="M320,110 C320,132.09139 266.27417,150 200,150 C133.72583,150 80,132.09139 80,110" id="Line1" stroke="#a78bfa" stroke-width="2" opacity="0.8"></path>
+                <path d="M320,180 C320,202.09139 266.27417,220 200,220 C133.72583,220 80,202.09139 80,180" id="Line2" stroke="#a78bfa" stroke-width="2" opacity="0.8"></path>
+            </g>
+            
+            <!-- SQL Injection Code -->
+            <g id="SqlInjection" transform="translate(100, 240)" filter="url(#glow)">
+                <rect id="CodeBackground" fill="#1e1e3f" x="0" y="0" width="400" height="160" rx="8"></rect>
+                
+                <!-- Code Lines -->
+                <text font-family="Monaco, monospace" font-size="14" fill="#f8f8f2" x="20" y="30">
+                    <tspan>' OR 1=1--</tspan>
+                </text>
+                <text font-family="Monaco, monospace" font-size="14" fill="#ff79c6" x="20" y="60">
+                    <tspan>SELECT * FROM users WHERE id = $input;</tspan>
+                </text>
+                <text font-family="Monaco, monospace" font-size="14" fill="#f1fa8c" x="20" y="90">
+                    <tspan>UNION SELECT username,password FROM users;</tspan>
+                </text>
+                <text font-family="Monaco, monospace" font-size="14" fill="#8be9fd" x="20" y="120">
+                    <tspan>/* Scanning for SQL injection vulnerability */</tspan>
+                </text>
+                <text font-family="Monaco, monospace" font-size="14" fill="#50fa7b" x="20" y="150">
+                    <tspan>VULNERABILITY DETECTED!</tspan>
+                </text>
+            </g>
+            
+            <!-- Scanner Elements -->
+            <g id="Scanner" transform="translate(0, 0)">
+                <!-- Scanning Lines -->
+                <path d="M50,80 L550,80" id="ScanLine1" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="10,5" opacity="0.8"></path>
+                <path d="M50,400 L550,400" id="ScanLine2" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="10,5" opacity="0.8"></path>
+                
+                <!-- Scanner Beams -->
+                <path d="M300,40 L300,440" id="ScanBeam" stroke="url(#linearGradient-2)" stroke-width="4" opacity="0.6"></path>
+                
+                <!-- Scanner Frame -->
+                <rect id="ScannerFrame" stroke="#a78bfa" stroke-width="3" x="40" y="40" width="520" height="400" rx="12" stroke-dasharray="20,10"></rect>
+            </g>
+            
+            <!-- Glowing Nodes -->
+            <circle cx="100" cy="100" r="8" fill="#a78bfa" opacity="0.8" filter="url(#glow)"></circle>
+            <circle cx="200" cy="50" r="6" fill="#8b5cf6" opacity="0.8" filter="url(#glow)"></circle>
+            <circle cx="400" cy="80" r="10" fill="#7c3aed" opacity="0.8" filter="url(#glow)"></circle>
+            <circle cx="500" cy="120" r="7" fill="#a78bfa" opacity="0.8" filter="url(#glow)"></circle>
+            <circle cx="100" cy="350" r="9" fill="#8b5cf6" opacity="0.8" filter="url(#glow)"></circle>
+            <circle cx="450" cy="380" r="8" fill="#7c3aed" opacity="0.8" filter="url(#glow)"></circle>
+            <circle cx="550" cy="300" r="6" fill="#a78bfa" opacity="0.8" filter="url(#glow)"></circle>
+        </g>
+    </g>
+</svg>
