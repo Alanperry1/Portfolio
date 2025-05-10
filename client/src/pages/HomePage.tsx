@@ -8,7 +8,6 @@ import Skills from "@/components/Skills";
 import Certifications from "@/components/Certifications";
 import CTFs from "@/components/CTFs";
 import Organizations from "@/components/Organizations";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CyberSecurityBackground from "@/components/CyberSecurityBackground";
 import ParticleNetwork from "@/components/ParticleNetwork";
@@ -35,7 +34,6 @@ const HomePage = () => {
         <Certifications />
         <CTFs />
         <Organizations />
-        <Contact />
       </motion.main>
       <Footer />
     </div>
