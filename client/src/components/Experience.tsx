@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
+    title: "Application Security Engineer",
+    company: "Georim",
+    location: "Ruston, LA",
+    period: "May 2025 - Present",
+    category: "Full-time"
+  },
+  {
     title: "Security Research Assistant",
     company: "Grambling State University",
     location: "Grambling, LA",
@@ -16,18 +23,18 @@ const experiences = [
     category: "Internship"
   },
   {
-    title: "Cybersecurity Job Simulation",
-    company: "Forage",
-    location: "Remote",
-    period: "Jan 2024 - Mar 2024",
-    category: "Simulation"
-  },
-  {
     title: "Cybersecurity Engineer Intern",
     company: "Ideation Axis",
     location: "Accra, Ghana",
     period: "Jul 2023 - Nov 2023",
     category: "Internship"
+  },
+  {
+    title: "Cybersecurity Job Simulation",
+    company: "Forage",
+    location: "Remote",
+    period: "Jan 2024 - Mar 2024",
+    category: ""
   }
 ];
 
@@ -73,82 +80,41 @@ const Experience = () => {
           <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-2 w-8 h-px bg-gradient-to-r from-transparent via-accent to-transparent"></div>
         </motion.div>
         
-        <motion.div 
-          className="max-w-3xl mx-auto relative"
+        <motion.div
+          className="max-w-4xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {experiences.map((exp, index) => (
-            <motion.div 
-              key={index}
-              className="timeline-container relative pl-10 pb-10"
-              variants={itemVariants}
-            >
-              {/* Cyber-themed timeline node */}
-              <div className="absolute left-0 top-2 w-8 h-8 bg-dark/80 rounded-full border border-accent/70 flex items-center justify-center overflow-hidden group-hover:border-accent transition-colors duration-300">
-                <div className="w-3 h-3 bg-accent/80 rounded-full group-hover:bg-accent relative z-10"></div>
-                <div className="absolute inset-0 bg-cyber-grid opacity-30"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-60"></div>
-                {/* Animated pulse ring */}
-                <div className="absolute inset-0 border border-accent/20 rounded-full animate-ping-slow opacity-70"></div>
-              </div>
-              
-              {/* Vertical connector line */}
-              <div className="absolute left-4 top-10 bottom-0 w-0.5 bg-gradient-to-b from-accent/50 via-accent/20 to-transparent"></div>
-              <motion.div 
-                className="bg-secondary/30 backdrop-blur-sm rounded-lg p-6 border border-accent/20 transition-all hover:shadow-lg hover:shadow-accent/10 relative overflow-hidden group"
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.3 }}
+          <div className="space-y-8">
+            {experiences.map((experience, index) => (
+              <motion.div
+                key={index}
+                className="bg-gradient-to-br from-secondary/40 to-dark/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-accent/20 hover:shadow-accent/20 transition-all duration-300 group relative overflow-hidden"
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, y: -5 }}
               >
-                {/* Digital noise overlay */}
-                <div className="absolute inset-0 bg-cyber-grid opacity-10 mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                {/* Scanning line effect on hover */}
-                <motion.div 
-                  className="absolute left-0 w-full h-[1px] bg-accent/40 opacity-0 group-hover:opacity-100 z-10"
-                  initial={{ top: 0 }}
-                  whileHover={{ 
-                    top: ["0%", "100%"], 
-                    transition: { 
-                      duration: 1.5,
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      ease: "linear"
-                    }
-                  }}
-                />
-                
-                {/* Corner brackets */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent/60"></div>
-                <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-accent/60"></div>
-                <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-accent/60"></div>
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent/60"></div>
-                
-                {/* Terminal-style header */}
-                <div className="flex justify-between mb-4 pb-3 border-b border-accent/10 relative">
-                  <div className="flex items-center">
-                    <span className="text-xs text-accent/60 font-cyber mr-2">&gt;</span>
-                    <h3 className="text-xl font-cyber font-semibold text-accent">{exp.title}</h3>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <span className="text-xs text-accent/70 font-cyber bg-dark/30 px-3 py-1 rounded-sm border border-accent/20">
-                      {exp.category}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="mt-3">
-                  <div className="font-cyber text-sm text-neutral/80 flex items-center">
-                    <div className="w-1.5 h-1.5 bg-accent/70 rounded-full mr-2"></div>
-                    <span className="font-semibold text-accent/90">{exp.company}</span>
+                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-xl font-semibold text-white group-hover:text-accent transition-colors">
+                        {experience.title}
+                      </h3>
+                      {experience.category && (
+                        <span className="text-xs px-2 py-1 bg-accent/20 text-accent rounded-full border border-accent/30">
+                          {experience.category}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-accent font-medium mb-1">{experience.company}</p>
                   </div>
                 </div>
               </motion.div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

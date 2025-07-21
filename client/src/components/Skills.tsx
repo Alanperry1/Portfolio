@@ -23,7 +23,7 @@ const securityTools = [
   "Ghidra", "IDA Pro", "Autopsy", "Nessus", "IBM X-Force", "OWASP ZAP", "OpenVAS"
 ];
 
-const frameworks = ["STRIDE", "NIST CSF", "MITRE ATT&CK", "PCI-DSS", "OWASP", "Cyber Kill Chain", "Diamond Model"];
+const frameworks = ["STRIDE", "NIST CSF", "MITRE ATT&CK", "PCI-DSS", "OWASP", "Cyber Kill Chain", "Diamond Model", "ISO 27001"];
 
 const coreSkills = [
   { name: "Risk Assessment", icon: <Search className="h-6 w-6" /> },

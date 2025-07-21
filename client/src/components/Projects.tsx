@@ -20,6 +20,14 @@ interface Project {
 
 const projects = [
   {
+    title: "Digital Infrastructure Risk Assessment",
+    type: "Personal Project",
+    description: "Performed comprehensive risk assessment to assess compliance and access risks using ISO 27001 controls and role-based access mapping. Remediated critical control gaps by enforcing developer access policies and design review checkpoints.",
+    tags: ["ISO 27001", "Risk Assessment", "Compliance", "Access Control"],
+    image: sqliScannerImage,
+    isPrivate: true
+  },
+  {
     title: "SQLi Scanner",
     type: "Personal Project",
     description: "Created an advanced SQL injection vulnerability scanner with intelligent payload generation and risk assessment capabilities. Built with pattern recognition to identify vulnerable entry points in web applications.",
@@ -94,9 +102,8 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 bg-primary">
+    <section id="projects" className="py-16 bg-gradient-to-b from-dark to-primary">
       <div className="container mx-auto px-4">
-        {/* Section header */}
         <motion.div
           className="relative mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -105,36 +112,18 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-32 h-px bg-gradient-to-r from-transparent via-accent to-transparent"></div>
-          <div className="flex flex-col items-center justify-center">
-            <motion.div 
-              className="py-1 px-8 border-2 border-purple-600 rounded-full mb-4 shadow-purple"
-              initial={{ scale: 0.9 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <h2 className="text-4xl md:text-7xl font-heading font-extrabold">
-                <span className="bg-gradient-to-r from-purple-500 via-violet-400 to-indigo-500 bg-clip-text text-transparent drop-shadow-md">
-                  PROJECTS
-                </span>
-              </h2>
-            </motion.div>
-            
-            {/* Decorative line */}
-            <motion.div 
-              className="w-32 h-1 bg-gradient-to-r from-purple-600 to-accent rounded-full mb-8 shadow-glow opacity-80"
-              initial={{ width: 0 }}
-              whileInView={{ width: 128 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            ></motion.div>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold font-cyber mt-4">
+            <span className="relative inline-block">
+              <span className="relative z-10 text-neon">CYBER</span>
+              <span className="text-accent absolute -left-1 top-0 blur-sm opacity-70 z-0">CYBER</span>
+            </span>{" "}
+            <span className="bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent">PROJECTS</span>
+          </h2>
           <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-4 w-16 h-px bg-gradient-to-r from-transparent via-accent to-transparent"></div>
           <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-2 w-8 h-px bg-gradient-to-r from-transparent via-accent to-transparent"></div>
         </motion.div>
         
-        {/* Project grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
@@ -144,101 +133,65 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="h-full"
+              className="bg-gradient-to-br from-secondary/40 to-dark/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-accent/20 group hover:shadow-accent/20 transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden"
               variants={itemVariants}
+              whileHover={{ y: -5 }}
             >
-              <motion.div 
-                className="bg-secondary/40 backdrop-blur-sm rounded-lg overflow-hidden border-2 border-purple-500/30 transition-all hover:shadow-xl hover:shadow-purple relative group h-full"
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Glow overlay on hover */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/0 via-purple-600/20 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-center mb-4">
+                  <img src={project.image} alt={project.title} className="w-16 h-16 object-contain" />
+                </div>
                 
-                {/* Digital noise overlay */}
-                <div className="absolute inset-0 bg-cyber-grid opacity-10 mix-blend-overlay"></div>
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-accent transition-colors">
+                    {project.title}
+                  </h3>
+                  <span className="text-xs px-2 py-1 bg-accent/20 text-accent rounded-full border border-accent/30">
+                    {project.type}
+                  </span>
+                </div>
                 
-                {/* Scanning line effect on hover */}
-                <motion.div 
-                  className="absolute left-0 w-full h-[2px] bg-accent/60 opacity-0 group-hover:opacity-100 z-10 shadow-glow"
-                  initial={{ top: 0 }}
-                  whileHover={{ 
-                    top: ["0%", "100%"], 
-                    transition: { 
-                      duration: 1.5,
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      ease: "linear"
-                    }
-                  }}
-                />
+                <p className="text-neutral/80 text-sm mb-4 leading-relaxed">
+                  {project.description}
+                </p>
                 
-                {/* Corner brackets */}
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-purple-500/70 z-10"></div>
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-purple-500/70 z-10"></div>
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-purple-500/70 z-10"></div>
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-purple-500/70 z-10"></div>
-                
-                <div className="relative">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-56 object-cover" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark/90 to-dark/10"></div>
-                  <div className="absolute bottom-0 left-0 w-full p-3">
-                    <span className="text-xs font-cyber bg-purple-900/70 border border-purple-500/60 py-1 px-3 rounded-full text-white font-medium shadow-purple">
-                      {project.type}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="text-xs px-2 py-1 bg-dark/30 text-white rounded border border-accent/50 backdrop-blur-sm"
+                      style={{
+                        backgroundColor: 'rgba(122, 54, 250, 0.3)',
+                        borderColor: 'rgba(122, 54, 250, 0.5)',
+                        boxShadow: '0 0 10px rgba(122, 54, 250, 0.2)'
+                      }}
+                    >
+                      {tag}
                     </span>
-                  </div>
+                  ))}
                 </div>
                 
-                <div className="p-6 relative">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-2xl font-heading font-bold text-white group-hover:text-accent transition-colors">
-                      {project.title}
-                    </h3>
-                  </div>
+                <div className="flex gap-3">
+                  {!project.isPrivate && project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-accent/80 to-purple-600/80 text-white rounded-lg hover:from-accent hover:to-purple-600 transition-all text-xs font-medium shadow-md hover:shadow-accent/30 transform hover:scale-105"
+                    >
+                      <Github size={14} />
+                      <span>View Code</span>
+                    </a>
+                  )}
                   
-                  <div className="bg-dark/40 p-4 rounded-md border-l-4 border-purple-500 mb-5 text-white/90">
-                    <p className="leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-                  
-                  <div className="flex flex-wrap items-center text-xs mb-5 gap-2">
-                    {project.tags.map((tag, i) => (
-                      <span 
-                        key={i} 
-                        className="bg-accent/40 border border-accent/60 text-white font-medium rounded-full px-3 py-1.5 shadow-sm shadow-accent/30"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex justify-between items-center pt-3 border-t border-accent/20">
-                    {project.github ? (
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-white bg-purple-600/70 hover:bg-purple-600 px-4 py-2 rounded-full inline-flex items-center text-sm font-medium shadow-purple transition-all duration-300"
-                      >
-                        <Github className="mr-2 h-4 w-4" /> 
-                        <span className="relative">
-                          View Code
-                        </span>
-                      </a>
-                    ) : (
-                      <span className="text-neutral/70 text-sm font-medium flex items-center">
-                        <span className="bg-yellow-500/50 h-2.5 w-2.5 rounded-full mr-2 shadow-sm"></span>
-                        Team Project
-                      </span>
-                    )}
+                  <div className="flex items-center gap-2 px-3 py-2 bg-dark/40 text-neutral border border-accent/30 rounded-lg text-xs">
+                    <FileText size={14} />
+                    <span>Documentation</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
